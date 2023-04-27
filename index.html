@@ -11,62 +11,53 @@
 </head>
 
 <body>
-    <div class="start_btn"><button>Start Quiz</button></div>
-
-    <main class="quiz_box">
-        <header>
-            <section class="Quiz">
-                <div class="timer">
-                    <div class="time_text">Time Left</div>
-                    <div class="timer_sec">60</div>
-                </div>
-            </section>
-
-        </header>
-        <section>
-        <div class="que_text">
-            <span>Javascript is an _______ language?</span>
-        </div>
-        <div class="option_list">
-            <div class="option">
-                <span>Object-Orienteded</span>
-                <div class="icon"><i class="fas fa-check"></i></div>
+    <!-- Main Quiz Text-->
+    <header>
+        <nav class="navbar navbar-expand-Ig navbar-light mb-4">
+            <a class="navbar=brand" href="highscores.html">Highscores</a>
+            <div class="navbar-text" id="navbarText">
+                <section class="navbar-text" id="restartButton">
+                    Time: 60 seconds
+                </section>
             </div>
-            <div class="option">
-                <span>Object-Base</span>
-                <div class="icon"><i class="fas fa-check"></i></div>
-            </div>
-            <div class="option">
-                <span>Procedural</span>
-                <div class="icon"><i class="fas fa-check"></i></div>
-            </div>
-            <div class="option">
-                <span>None of the above</span>
-                <div class="icon"><i class="fas fa-check"></i></div>
-            </div>
-
-        </div>
+        </nav>
+    </header>
+    <main>
+        <section id="start" class="quiz-selection">
+            <h1>Coding Quiz Challenge</h1>
+            <p class="card-text">
+                Try answering the questions within the 60 second time limit.
+                <br>
+                Also be aware that everytime you get one question wrong your score/timer will be reduced.
+                <br>
+            </p>
+            <button id="start-button">Start Quiz</button>
         </section>
-        
-            <footer>
-                <div class="total_que">
-                    <span>
-                        <p>2</p>of<p>5</p>Questions
-                    </span>
-                    <button class="next_btn">Next</button>
-                </div>
-        
-            </footer>
+
+        <section id="quiz-questions" class="hidden quiz-section">
+            <p id="timer">Time: <span id="time-remaining">0</span></p>
+            <h1 id="question">Quiz Question</h1>
+            <ul id="choices"></ul>
+        </section>
+
+        <section id="end" class="quiz-section hidden">
+            <h1 id="end-title">Quiz Completed</h1>
+            <p id="score-text">You scored: <span id="score">0</span></p>
+            <form id="submit-score">
+                <label for="initials">Enter initials</label>
+                <input type="text" id="initials">
+                <button type="submit">submit</button>
+                <p id="error-message"></p>
+            </form>
+
+            <a href="index.html" class="back-button"><i class="fas fa-angle-left" aria-hidden="true"></i>Back to Quiz</a>
+        </section>
+
+        <div>
+            <p id="correct" class="choice-status hidden"><i class="fas fa-check-circle" aria-hidden="ture"></i>Correct!</p>
+            <p id="wrong" class="choice-status hidden"><i class="fas fa-times-circle" aria-hidden="true"></i>Wrong!</p>
+        </div>
     </main>
-
-
-
-
-
-
-
-
-
     <script src="script.js"></script>
 </body>
 
