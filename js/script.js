@@ -1,9 +1,9 @@
 const QUIZ_SECTIONS = document.querySelectorAll(".quiz-section");
 
 const start_Section = document.getElementById("start");
-const start_Button = document.getElementById("start-button");
+const start_Btn = document.getElementById("start-button");
 
-const QUIZ_SECTION = document.getElementById("quiz-sections");
+const QUIZ_SECTION = document.getElementById("quiz-questions");
 const time_remaining = document.getElementById("time-remaining");
 const question = document.getElementById("question");
 const choices = document.getElementById("choices");
@@ -26,31 +26,31 @@ class Question {
     }
 }
 
-const question_1 = new question('HTML stands for ____ ?',
+const question_1 = new Question('HTML stands for ____ ?',
 ["HighText Machine Language",
 "HyperText and links Markup Language",
 "HyperText Markup Language",
 "None of these",], 3);
 
-const question_2 =new question("Which of the following element is the responsible for making the text bold in HTML",
+const question_2 = new Question("Which of the following element is the responsible for making the text bold in HTML",
 ['<pre>', '<a>', '<b>', '<br>'], 3);
 
-const question_3 =new question('Which of the following tag is used for inserting the largest heading in HTML?',
+const question_3 = new Question('Which of the following tag is used for inserting the largest heading in HTML?',
 ['<h3>', '<h1>', '<h5>', '<h6>'], 2);
 
-const question_4 =new question('How can you catch a computer virus?',
+const question_4 = new Question('How can you catch a computer virus?',
 ['Sending e-mail messages',
 'Using a laptop during the winter',
 'Opening e-mail attachments',
 'Shopping on-line',], 3);
 
-const question_5 =new question('Google (www.google.com) is a:',
+const question_5 = new Question('Google (www.google.com) is a:',
 ['Search Engine',
 'Number in Math',
 'Directory of images',
 'Chat service on the web',], 1);
 
-const question_6 =new question('Which of the following is not a valid domain name?',
+const question_6 = new Question('Which of the following is not a valid domain name?',
 ['wwww.yahoo.com',
 'www.yahoo.net',
 'www.com.yahoo',
@@ -59,11 +59,12 @@ const question_6 =new question('Which of the following is not a valid domain nam
 const question_list = [question_1, question_2, question_3, question_4, question_5, question_6];
 
 let currentQuestion = 0;
-let totalline = 75;
-let totalTimeInterval;
-let choicesStatusTimeout;
 
-start_Button.addEventListener('click', startGame);
+let totalTime = 60;
+let totalTimeInterval;
+let choiceStatusTimeout;
+
+start_Btn.addEventListener('click', startGame);
 choices.addEventListener('click', processChoice);
 submit_score.addEventListener('submit', processInput);
 
@@ -80,7 +81,7 @@ function showElement(siblingList, showElement) {
     for (element of siblingList) {
         hideElement(element);
     }
-    showElement.classList.remove('hidden');
+    showElement.classList.remove('hidden');   
 }
 
 function hideElement(element) {
@@ -89,11 +90,17 @@ function hideElement(element) {
     }
 }
 
+function displayTime() {
+    time_remaining.textContent = totalTime;
+}
+
+
 function startTimer(){
     totalTimeInterval = setInterval(function(){
         totalTime--;
         displayTime();
         checkTime();
+
     }, 1000);
 }
 
@@ -135,12 +142,12 @@ function processChoice(event){
 }
 
 function resetChoiceStatusEffect() {
-    clearTimeout(choicesStatusTimeout);
+    clearTimeout(choiceStatusTimeout);
     styleTimeReaminingDefault();
 }
 
 function styleTimeReaminingDefault(){
-    time_remaining.style.color = '#000000';
+    time_remaining.style.color = '#4616E8';
 }
 
 function styleTimeReaminingWrong(){
@@ -160,12 +167,12 @@ function isChoiceCorrect(choice) {
 }
 
 function displayWrongChoiceEffects(){
-    deductTimeBy(10);
+    deductTimeBy(5);
 
     styleTimeReaminingWrong();
     showElement(choices_Status, wrong);
 
-    choicesStatusTimeout = setTimeout(function(){
+    choiceStatusTimeout = setTimeout(function(){
         hideElement(wrong);
         styleTimeReaminingDefault();
     }, 1000);
@@ -180,7 +187,7 @@ function deductTimeBy(seconds){
 function displayCorrectChoiceEffects(){
     showElement(choices_Status, correct);
 
-    choicesStatusTimeout = setTimeout(function(){
+    choiceStatusTimeout = setTimeout(function(){
         hideElement(correct);
     }, 1000);
 }
@@ -288,5 +295,5 @@ function getNewScoreIndex(newEntry, scoreList){
             }
         }
     }
-    return scoreList.length;
+    return scoreList.length
 }

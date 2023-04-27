@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz app</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
 
 </head>
 
@@ -14,7 +14,7 @@
     <!-- Main Quiz Text-->
     <header>
         <nav class="navbar navbar-expand-Ig navbar-light mb-4">
-            <a class="navbar=brand" href="highscores.html">Highscores</a>
+            <a class="navbar=brand" href="scores.html">Highscores</a>
             <div class="navbar-text" id="navbarText">
                 <section class="navbar-text" id="restartButton">
                     Time: 60 seconds
@@ -23,7 +23,7 @@
         </nav>
     </header>
     <main>
-        <section id="start" class="quiz-selection">
+        <section id="start" class="quiz-section">
             <h1>Coding Quiz Challenge</h1>
             <p class="card-text">
                 Try answering the questions within the 60 second time limit.
@@ -33,7 +33,6 @@
             </p>
             <button id="start-button">Start Quiz</button>
         </section>
-
         <section id="quiz-questions" class="hidden quiz-section">
             <p id="timer">Time: <span id="time-remaining">0</span></p>
             <h1 id="question">Quiz Question</h1>
@@ -58,7 +57,7 @@
             <p id="wrong" class="choice-status hidden"><i class="fas fa-times-circle" aria-hidden="true"></i>Wrong!</p>
         </div>
     </main>
-    <script src="script.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
